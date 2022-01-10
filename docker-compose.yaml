@@ -1,0 +1,47 @@
+version: "3.8"
+
+networks:
+  nymphaea-nw:
+    driver: bridge
+    name: nymphaea-nw
+
+volumes:
+  app_db:
+    driver: local
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./docker/app/Dockerfile
+    tty: true
+    container_name: nymphaea_app
+    ports:
+      - "3000:3000"
+    networks:
+      nymphaea-nw:
+        aliases:
+          - nymphaea-app
+    environment:
+      - NODE_ENV=dev
+
+  db:
+    build:
+      context: .
+      dockerfile: ./docker/db/Dockerfile
+    tty: true
+    container_name: nymphaea_db
+    networks:
+      nymphaea-nw:
+        aliases:
+          - nymphaea-db
+    ports:
+      - "3390:3306"
+    environment:
+      - MYSQL_DATABASE=nymphaea
+      - MYSQL_ROOT_PASSWORD=nymphaea
+      - MYSQL_USER=dev
+      - MYSQL_PASSWORD=devdevdev
+    volumes:
+      - app_db:/var/lib/mysql
+
