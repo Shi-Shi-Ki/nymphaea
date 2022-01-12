@@ -24,4 +24,8 @@ export class CatsService {
   findOneById(id: number): Cat {
     return this.cats.find(cat => cat.id === id);
   }
+
+  findByIds(ids: number[]): Cat[] {
+    return ids.map(id => this.cats.find(cat => cat.id === id))
+  }
 }
