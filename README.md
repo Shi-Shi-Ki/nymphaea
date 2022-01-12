@@ -2,11 +2,20 @@
 
 ### Installation
 
-`docker-compose up -d app`
+`$ docker-compose up -d app`
+
+or
+
+```
+$ npm install
+$ npm build
+```
 
 ### Open Graphql Playground
 
-[http://0.0.0.0:3000/graphql](http://0.0.0.0:3000/graphql)
+(docker) [http://0.0.0.0:3000/graphql](http://0.0.0.0:3000/graphql)
+
+(local) [http://localhost:3000/graphql](http://localhost:3000/graphql)
 
 ### Sample Query
 ```
@@ -65,7 +74,9 @@
 ```
 
 ### With curl
-`$ curl -X POST -H "Content-Type:application/json" -d '{ "query": "{ cat(id: 1) { id,name,age } }" }' http://0.0.0.0:3000/graphql`
+```
+$ curl -X POST -H "Content-Type:application/json" -d '{ "query": "{ cat(id: 1) { id,name,age } }" }' http://0.0.0.0:3000/graphql
+```
 
 ### Base Sample
 [12-graphql-schema-first](https://github.com/nestjs/nest/tree/master/sample/12-graphql-schema-first)
