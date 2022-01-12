@@ -2,13 +2,16 @@
 
 ### Installation
 
-`$ docker-compose up -d app`
+```
+$ docker-compose up -d app
+```
 
 or
 
 ```
 $ npm install
-$ npm build
+$ npm run build
+$ npm run start
 ```
 
 ### Open Graphql Playground
