@@ -7,6 +7,8 @@ export class CatsService {
     { id: 1, name: 'mike', age: 5, ownerId: 1 },
     { id: 2, name: 'kuro', age: 3, ownerId: 1 },
     { id: 3, name: 'maro', age: 8, ownerId: 2 },
+    { id: 4, name: 'siro', age: 1, ownerId: 0 },
+    { id: 5, name: 'saba', age: 6, ownerId: 0 },
   ];
 
   create(cat: Cat): Cat {
