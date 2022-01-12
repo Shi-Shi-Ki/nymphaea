@@ -1,4 +1,4 @@
-import { ParseIntPipe, UseGuards } from '@nestjs/common';
+import { ParseArrayPipe, ParseIntPipe, UseGuards } from '@nestjs/common';
 import { Args, Mutation, Query, Resolver, Subscription } from '@nestjs/graphql';
 import { PubSub } from 'graphql-subscriptions';
 import { Cat } from '../graphql.schema';
@@ -24,6 +24,14 @@ export class CatsResolver {
     id: number,
   ): Promise<Cat> {
     return this.catsService.findOneById(id);
+  }
+
+  @Query('catByIds')
+  async findByIds(
+    @Args('ids', new ParseArrayPipe({ items: Number, separator: ',' }))
+    ids: number[],
+  ): Promise<Cat[]> {
+    return this.catsService.findByIds(ids);
   }
 
   @Mutation('createCat')
